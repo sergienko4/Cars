@@ -18,7 +18,6 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public ActionResult LogIn(LogIn user)
         {
-            string test = null;
             return View();
         }
 
