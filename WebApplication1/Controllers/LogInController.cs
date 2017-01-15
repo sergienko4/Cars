@@ -30,6 +30,11 @@ namespace WebApplication1.Controllers
         {
             return View();
         }
+        [HttpPatch]
+        public ActionResult Registration(Registration user, string s)
+        {
+            return View();
+        }
 
 
 
