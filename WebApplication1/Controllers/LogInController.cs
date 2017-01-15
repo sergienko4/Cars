@@ -18,8 +18,19 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public ActionResult LogIn(LogIn user)
         {
+
             return View();
         }
+        public ActionResult Registration()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Registration(Registration user)
+        {
+            return View();
+        }
+
 
 
     }
