@@ -9,7 +9,7 @@ namespace WebApplication1.Controllers
 {
     public class LogInController : Controller
     {
-        // GET: LogIn
+        [HttpGet]// GET: LogIn
         public ActionResult LogIn()
         {
             return View();
@@ -21,17 +21,13 @@ namespace WebApplication1.Controllers
 
             return View();
         }
+        [HttpGet]
         public ActionResult Registration()
         {
             return View();
         }
         [HttpPost]
         public ActionResult Registration(Registration user)
-        {
-            return View();
-        }
-        [HttpPatch]
-        public ActionResult Registration(Registration user, string s)
         {
             return View();
         }
