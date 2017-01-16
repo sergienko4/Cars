@@ -1,5 +1,6 @@
 ﻿USE master
 IF EXISTS(select * from sys.databases where name='RentCar')
+ALTER DATABASE [RentCar] SET single_user WITH rollback immediate 
 DROP DATABASE RentCar
 
 CREATE DATABASE RentCar
