@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BL;
+using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
@@ -25,7 +26,7 @@ namespace WebApplication1.Controllers
 
         }
         [HttpPost]
-        public ActionResult RentCalculation(int CarNumber)
+        public ActionResult Search(SearchCar search)
         {
             return View();
         }

@@ -26,26 +26,26 @@ namespace WebApplication1.Helper
                     PriceExtra = car.CarType.PriceExtraPerDay,
                     PricePerDay = car.CarType.PricePerDay,
                     Year = car.CarType.Year
-                });
-            }
+            });
+        }
             return list;
         }
 
 
-        public CarModel GetCarModel(Car car)
+    public CarModel GetCarModel(Car car)
+    {
+        return new CarModel()
         {
-            return new CarModel()
-            {
-                CarNumber = car.CarNum,
-                BrandName = car.CarType.Brand,
-                IsManual = car.CarType.IsManual,
-                KM = car.KM,
-                Model = car.CarType.Model,
-                Picture = car.CarPic,
-                PriceExtra = car.CarType.PriceExtraPerDay,
-                PricePerDay = car.CarType.PricePerDay,
-                Year = car.CarType.Year
-            };
-        }
+            CarNumber = car.CarNum,
+            BrandName = car.CarType.Brand,
+            IsManual = car.CarType.IsManual,
+            KM = car.KM,
+            Model = car.CarType.Model,
+            Picture = car.CarPic,
+            PriceExtra = car.CarType.PriceExtraPerDay,
+            PricePerDay = car.CarType.PricePerDay,
+            Year = car.CarType.Year
+        };
     }
+}
 }

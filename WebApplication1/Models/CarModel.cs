@@ -16,5 +16,6 @@ namespace WebApplication1.Models
         public decimal PriceExtra { get; set; }
         public int Year { get; set; }
         public bool IsManual { get; set; }
+        public SearchCar Search { get; set; }
     }
 }
