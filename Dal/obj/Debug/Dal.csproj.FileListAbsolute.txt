@@ -8,3 +8,13 @@ c:\Users\orang\Documents\Visual Studio 2015\Projects\WebApplication1\Dal\bin\Deb
 c:\Users\orang\Documents\Visual Studio 2015\Projects\WebApplication1\Dal\obj\Debug\Dal.csprojResolveAssemblyReference.cache
 c:\Users\orang\Documents\Visual Studio 2015\Projects\WebApplication1\Dal\obj\Debug\Dal.dll
 c:\Users\orang\Documents\Visual Studio 2015\Projects\WebApplication1\Dal\obj\Debug\Dal.pdb
+C:\Users\orang\Documents\Visual Studio 2015\Projects\WebApplication1\WebApplication1\Dal\bin\Debug\Dal.dll.config
+C:\Users\orang\Documents\Visual Studio 2015\Projects\WebApplication1\WebApplication1\Dal\bin\Debug\Dal.dll
+C:\Users\orang\Documents\Visual Studio 2015\Projects\WebApplication1\WebApplication1\Dal\bin\Debug\Dal.pdb
+C:\Users\orang\Documents\Visual Studio 2015\Projects\WebApplication1\WebApplication1\Dal\bin\Debug\EntityFramework.dll
+C:\Users\orang\Documents\Visual Studio 2015\Projects\WebApplication1\WebApplication1\Dal\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\orang\Documents\Visual Studio 2015\Projects\WebApplication1\WebApplication1\Dal\bin\Debug\EntityFramework.xml
+C:\Users\orang\Documents\Visual Studio 2015\Projects\WebApplication1\WebApplication1\Dal\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\orang\Documents\Visual Studio 2015\Projects\WebApplication1\WebApplication1\Dal\obj\Debug\Dal.csprojResolveAssemblyReference.cache
+C:\Users\orang\Documents\Visual Studio 2015\Projects\WebApplication1\WebApplication1\Dal\obj\Debug\Dal.dll
+C:\Users\orang\Documents\Visual Studio 2015\Projects\WebApplication1\WebApplication1\Dal\obj\Debug\Dal.pdb
