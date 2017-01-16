@@ -16,10 +16,12 @@ namespace Dal.Model
     {
         public int OrderID { get; set; }
         public System.DateTime Start { get; set; }
-        public Nullable<System.DateTime> Finish { get; set; }
+        public System.DateTime Finish { get; set; }
         public Nullable<System.DateTime> Returned { get; set; }
-        public string UserID { get; set; }
+        public int UserID { get; set; }
+        public int CarID { get; set; }
     
+        public virtual Car Car { get; set; }
         public virtual User User { get; set; }
     }
 }

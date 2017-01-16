@@ -51,48 +51,47 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DbRequest.cs" />
     <Compile Include="GetDataFromDB.cs" />
     <Compile Include="Model\Branch.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
+      <DependentUpon>RentCarModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Car.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
+      <DependentUpon>RentCarModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\CarType.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Model2.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model2.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Model2.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model2.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Model2.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model2.edmx</DependentUpon>
+      <DependentUpon>RentCarModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Order.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
+      <DependentUpon>RentCarModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\RentCarModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RentCarModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\RentCarModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RentCarModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\RentCarModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RentCarModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Model\User.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
+      <DependentUpon>RentCarModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="Model\Model2.edmx">
+    <EntityDeploy Include="Model\RentCarModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model2.Designer.cs</LastGenOutput>
+      <LastGenOutput>RentCarModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Model\Model2.edmx.diagram">
-      <DependentUpon>Model2.edmx</DependentUpon>
+    <None Include="Model\RentCarModel.edmx.diagram">
+      <DependentUpon>RentCarModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -100,16 +99,15 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Model\Model2.Context.tt">
+    <Content Include="Model\RentCarModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model2.Context.cs</LastGenOutput>
-      <DependentUpon>Model2.edmx</DependentUpon>
+      <DependentUpon>RentCarModel.edmx</DependentUpon>
+      <LastGenOutput>RentCarModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Model\Model2.edmx.sql" />
-    <Content Include="Model\Model2.tt">
+    <Content Include="Model\RentCarModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model2.cs</LastGenOutput>
-      <DependentUpon>Model2.edmx</DependentUpon>
+      <DependentUpon>RentCarModel.edmx</DependentUpon>
+      <LastGenOutput>RentCarModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

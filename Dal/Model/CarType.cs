@@ -23,9 +23,9 @@ namespace Dal.Model
         public int CarTypeID { get; set; }
         public string Brand { get; set; }
         public string Model { get; set; }
-        public double PricePerDay { get; set; }
-        public double PriceExtra { get; set; }
-        public short Year { get; set; }
+        public decimal PricePerDay { get; set; }
+        public decimal PriceExtraPerDay { get; set; }
+        public int Year { get; set; }
         public bool IsManual { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

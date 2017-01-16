@@ -13,22 +13,22 @@ namespace Dal.Model
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Model1Container : DbContext
+    public partial class RentCarEntities : DbContext
     {
-        public Model1Container()
-            : base("name=Model1Container")
+        public RentCarEntities()
+            : base("name=RentCarEntities")
         {
         }
     
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            throw new UnintentionalCodeFirstException();
-        }
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+        //    throw new UnintentionalCodeFirstException();
+        //}
     
         public virtual DbSet<Branch> Branches { get; set; }
-        public virtual DbSet<CarType> CarTypes { get; set; }
-        public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Car> Cars { get; set; }
+        public virtual DbSet<CarType> CarTypes { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<User> Users { get; set; }
     }
 }

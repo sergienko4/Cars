@@ -14,14 +14,24 @@ namespace Dal.Model
     
     public partial class Car
     {
-        public int CarId { get; set; }
-        public string KM { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Car()
+        {
+            this.Orders = new HashSet<Order>();
+        }
+    
+        public int CarID { get; set; }
+        public int KM { get; set; }
         public string CarPic { get; set; }
         public bool IsFix { get; set; }
         public bool IsRentable { get; set; }
-        public short CarNum { get; set; }
+        public string CarNum { get; set; }
+        public int CarTypeID { get; set; }
+        public int BranchID { get; set; }
     
         public virtual Branch Branch { get; set; }
         public virtual CarType CarType { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

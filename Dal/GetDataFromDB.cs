@@ -14,9 +14,9 @@ namespace Dal
         public List<Car> GetCars()
         {
             List<Car> list;
-            using (DbRequest _db = new DbRequest())
+            using (RentCarEntities _db = new RentCarEntities())
             {
-                list = _db.Car.ToList();
+                list = _db.Cars.ToList();
             }
             return list;
 
