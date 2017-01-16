@@ -1,0 +1,102 @@
+﻿USE master
+IF EXISTS(select * from sys.databases where name='RentCar')
+DROP DATABASE RentCar
+
+CREATE DATABASE RentCar
+ 
+ USE RentCar
+-- tables
+-- Table: Branch
+CREATE TABLE Branch (
+    BranchID int  NOT NULL IDENTITY(1, 1),
+    Name nvarchar(max)  NOT NULL,
+    Address nvarchar(max)  NOT NULL,
+    Geo nvarchar(max)  NOT NULL,
+    CONSTRAINT Branch_pk PRIMARY KEY  (BranchID)
+);
+
+-- Table: Car
+CREATE TABLE Car (
+    CarID int  NOT NULL IDENTITY(1, 1),
+    KM int  NOT NULL,
+    CarPic nvarchar(max)  NULL,
+    IsFix bit  NOT NULL,
+    IsRentable bit  NOT NULL,
+    CarNum nvarchar(max)  NOT NULL,
+    CarTypeID int  NOT NULL,
+    BranchID int  NOT NULL,
+    CONSTRAINT Car_pk PRIMARY KEY  (CarID)
+);
+
+-- Table: CarType
+CREATE TABLE CarType (
+    CarTypeID int  NOT NULL IDENTITY(1, 1),
+    Brand nvarchar(max)  NOT NULL,
+    Model nvarchar(max)  NOT NULL,
+    PricePerDay money  NOT NULL,
+    PriceExtraPerDay money  NOT NULL,
+    Year int  NOT NULL,
+    IsManual bit  NOT NULL,
+    CONSTRAINT CarType_pk PRIMARY KEY  (CarTypeID)
+);
+
+-- Table: Order
+CREATE TABLE "Order" (
+    OrderID int  NOT NULL IDENTITY(1, 1),
+    Start datetime  NOT NULL,
+    Finish datetime  NOT NULL,
+    Returned datetime  NULL,
+    UserID int  NOT NULL,
+    CarID int  NOT NULL,
+    CONSTRAINT Order_pk PRIMARY KEY  (OrderID)
+);
+
+-- Table: User
+CREATE TABLE "User" (
+    UserID int  NOT NULL IDENTITY(1, 1),
+    FullName nvarchar(max)  NOT NULL,
+    ID nvarchar(9)  NOT NULL,
+    UserName nvarchar(max)  NOT NULL,
+    Password nvarchar(max)  NOT NULL,
+    Birthday date  NULL,
+    Gender char(1)  NOT NULL CHECK (Gender IN ('M', 'F')),
+    PicPath nvarchar(max)  NULL,
+    UserTypeID int  NOT NULL,
+    CONSTRAINT User_pk PRIMARY KEY  (UserID)
+);
+
+-- Table: UserType
+CREATE TABLE UserType (
+    UserTypeID int  NOT NULL IDENTITY(1, 1),
+    Name nvarchar(max)  NOT NULL,
+    CONSTRAINT UserType_pk PRIMARY KEY  (UserTypeID)
+);
+
+-- foreign keys
+-- Reference: Car_Branch (table: Car)
+ALTER TABLE Car ADD CONSTRAINT Car_Branch
+    FOREIGN KEY (BranchID)
+    REFERENCES Branch (BranchID);
+
+-- Reference: Car_CarType (table: Car)
+ALTER TABLE Car ADD CONSTRAINT Car_CarType
+    FOREIGN KEY (CarTypeID)
+    REFERENCES CarType (CarTypeID);
+
+-- Reference: Order_Car (table: Order)
+ALTER TABLE "Order" ADD CONSTRAINT Order_Car
+    FOREIGN KEY (CarID)
+    REFERENCES Car (CarID);
+
+-- Reference: Order_User (table: Order)
+ALTER TABLE "Order" ADD CONSTRAINT Order_User
+    FOREIGN KEY (UserID)
+    REFERENCES "User" (UserID);
+
+-- Reference: User_UserType (table: User)
+ALTER TABLE "User" ADD CONSTRAINT User_UserType
+    FOREIGN KEY (UserTypeID)
+    REFERENCES UserType (UserTypeID);
+
+-- End of file.
+
