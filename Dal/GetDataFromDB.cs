@@ -16,7 +16,7 @@ namespace Dal
             List<Car> list;
             using (DbRequest _db = new DbRequest())
             {
-                list = _db.Car.Include("TypeCar").ToList();
+                list = _db.Car.ToList();
             }
             return list;
 

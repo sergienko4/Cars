@@ -5,9 +5,14 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="5c4f73301fbf4c0f8bedc0a94aceec9d" Name="Diagram1" >
-        <EntityTypeShape EntityType="Model1.Car" Width="1.5" PointX="11" PointY="1.25" />
-        <EntityTypeShape EntityType="Model1.Branch" Width="1.5" PointX="4.75" PointY="2.75" />
+        <EntityTypeShape EntityType="Model1.Branch" Width="1.5" PointX="0.75" PointY="1.25" />
+        <EntityTypeShape EntityType="Model1.CarType" Width="1.5" PointX="6.5" PointY="1" />
+        <EntityTypeShape EntityType="Model1.User" Width="1.5" PointX="2.75" PointY="5" />
+        <EntityTypeShape EntityType="Model1.Order" Width="1.5" PointX="5" PointY="5.375" />
+        <AssociationConnector Association="Model1.UserRentCar" />
+        <EntityTypeShape EntityType="Model1.Car" Width="1.5" PointX="3" PointY="1" />
         <AssociationConnector Association="Model1.BranchCar" />
+        <AssociationConnector Association="Model1.CarTypeCar" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

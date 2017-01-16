@@ -25,7 +25,10 @@ namespace Dal.Model
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Car> Cars { get; set; }
         public virtual DbSet<Branch> Branches { get; set; }
+        public virtual DbSet<CarType> CarTypes { get; set; }
+        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<Car> Cars { get; set; }
     }
 }

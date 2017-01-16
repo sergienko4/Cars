@@ -13,10 +13,10 @@ namespace Dal
         {
         }
 
-        public System.Data.Entity.DbSet<Model.TypeCar> TypeCar { get; set; }
+        public System.Data.Entity.DbSet<Model.CarType> TypeCar { get; set; }
         public System.Data.Entity.DbSet<Model.Branch> Branch { get; set; }
         public System.Data.Entity.DbSet<Model.Car> Car { get; set; }
-        public System.Data.Entity.DbSet<Model.RentCar> RentCar { get; set; }
+        public System.Data.Entity.DbSet<Model.Order> RentCar { get; set; }
         public System.Data.Entity.DbSet<Model.User> User { get; set; }
        
 

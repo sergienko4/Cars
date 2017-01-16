@@ -12,16 +12,14 @@ namespace Dal.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Car
+    public partial class Order
     {
-        public int CarId { get; set; }
-        public string KM { get; set; }
-        public string CarPic { get; set; }
-        public bool IsFix { get; set; }
-        public bool IsRentable { get; set; }
-        public short CarNum { get; set; }
+        public int OrderID { get; set; }
+        public System.DateTime Start { get; set; }
+        public Nullable<System.DateTime> Finish { get; set; }
+        public Nullable<System.DateTime> Returned { get; set; }
+        public string UserID { get; set; }
     
-        public virtual Branch Branch { get; set; }
-        public virtual CarType CarType { get; set; }
+        public virtual User User { get; set; }
     }
 }

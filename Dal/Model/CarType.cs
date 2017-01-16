@@ -12,25 +12,23 @@ namespace Dal.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class CarType
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
+        public CarType()
         {
-            this.RentCars = new HashSet<Order>();
+            this.Cars = new HashSet<Car>();
         }
     
-        public int UserId { get; set; }
-        public string FullName { get; set; }
-        public string ID { get; set; }
-        public string UserName { get; set; }
-        public Nullable<System.DateTime> Birthday { get; set; }
-        public string Gender { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
-        public string PicPath { get; set; }
+        public int CarTypeID { get; set; }
+        public string Brand { get; set; }
+        public string Model { get; set; }
+        public double PricePerDay { get; set; }
+        public double PriceExtra { get; set; }
+        public short Year { get; set; }
+        public bool IsManual { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> RentCars { get; set; }
+        public virtual ICollection<Car> Cars { get; set; }
     }
 }
