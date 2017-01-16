@@ -23,6 +23,10 @@ namespace BL
             throw new NotImplementedException();
         }
 
-        
+
+        public List<Car> SearchCar(CarType car, DateTime start, DateTime finish)
+        {
+           return _db.SearchCar(car, start, finish).Tolist();
+        }
     }
 }

@@ -25,11 +25,22 @@ namespace WebApplication1.Controllers
             return View(car);
 
         }
-        [HttpPost]
-        public ActionResult Search(SearchCar search)
+        public ActionResult Search()
         {
             return View();
         }
+        [HttpPost]
+        public ActionResult Search(SearchCar SearchCar)
+        {
+            var car = new Helper.Convertor().GetCarTypeFromSerachModel(SearchCar);
+            var result = _manager.SearchCar(car, SearchCar.Start, SearchCar.Finish);
+            return View();
+        }
+        //[HttpPost]
+        //public ActionResult Search(string IsManual, string Year, string Brand)
+        //{
+        //    return View();
+        //}
 
         // GET: Index/Create
         public ActionResult Create()

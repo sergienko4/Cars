@@ -292,6 +292,8 @@
     <Content Include="Views\Index\Index.cshtml" />
     <Content Include="Views\Index\ToRentCar.cshtml" />
     <Content Include="Views\Shared\Search\_Search.cshtml" />
+    <Content Include="Views\Index\Find.cshtml" />
+    <Content Include="Views\Index\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

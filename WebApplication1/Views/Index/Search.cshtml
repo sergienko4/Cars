@@ -1,16 +1,16 @@
 ﻿@model WebApplication1.Models.SearchCar
 
 @{
-    ViewBag.Title = "Find";
+    ViewBag.Title = "Search";
 }
 
-<h2>Find</h2>
+<h2>Search</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-
+    
     <div class="form-horizontal">
         <h4>SearchCar</h4>
         <hr />

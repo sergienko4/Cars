@@ -31,8 +31,15 @@ namespace WebApplication1.Helper
             return list;
         }
 
+        public CarType GetCarTypeFromSerachModel(SearchCar SearchCar)
+        {
+            return new CarType()
+            {
+                Model = SearchCar.Model, Brand =  SearchCar.Brand, IsManual = SearchCar.IsManual, Year = SearchCar.Year
+            };
+        }
 
-    public CarModel GetCarModel(Car car)
+        public CarModel GetCarModel(Car car)
     {
         return new CarModel()
         {

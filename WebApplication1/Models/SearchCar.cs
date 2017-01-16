@@ -6,7 +6,7 @@ using System.Web;
 
 namespace WebApplication1.Models
 {
-    public class SearchCar
+    public class SearchCar 
     {
         public bool IsManual { get; set; }
         public int Year { get; set; }
@@ -14,9 +14,11 @@ namespace WebApplication1.Models
         public string Model { get; set; }
         [Display(Name = "By expretion")]
         public string FreeSearch { get; set; }
-        [DataType(DataType.DateTime)]
+        [DataType(DataType.Date)]
+        [Display(Name = "Puck up")]
         public DateTime Start { get; set; }
-        [DataType(DataType.DateTime)]
+        [DataType(DataType.Date)]
+        [Display(Name = "Return")]
         public DateTime Finish { get; set; }
     }
 }
