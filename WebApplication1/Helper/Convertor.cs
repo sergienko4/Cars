@@ -15,18 +15,18 @@ namespace WebApplication1.Helper
 
             foreach (var car in cars)
             {
-                //list.Add(new CarModel()
-                //{
-                //    CarNumber = car.CarNum,
-                //    BrandName = car.Brand,
-                //    IsManual = car.IsManual,
-                //    KM = car.KM,
-                //    Model = car.Model,
-                //    Picture = car.Picture,
-                //    PriceExtra = car.TypeCar.PriceExtra,
-                //    PricePerDay = car.TypeCar.PricePerDay,
-                //    Year = car.TypeCar.Year
-                //});
+                list.Add(new CarModel()
+                {
+                    CarNumber = car.CarNum,
+                    BrandName = car.CarType.Brand,
+                    IsManual = car.CarType.IsManual,
+                    KM = car.KM,
+                    Model = car.CarType.Model,
+                    Picture = car.CarPic,
+                    PriceExtra = car.CarType.PriceExtraPerDay,
+                    PricePerDay = car.CarType.PricePerDay,
+                    Year = car.CarType.Year
+                });
             }
             return list;
         }
@@ -36,15 +36,15 @@ namespace WebApplication1.Helper
         {
             return new CarModel()
             {
-                //CarNumber = car.CarNumber,
-                //BrandName = car.TypeCar.BrandName,
-                //IsManual = car.TypeCar.IsManual,
-                //KM = car.KM,
-                //Model = car.TypeCar.Model,
-                //Picture = car.Picture,
-                //PriceExtra = car.TypeCar.PriceExtra,
-                //PricePerDay = car.TypeCar.PricePerDay,
-                //Year = car.TypeCar.Year
+                CarNumber = car.CarNum,
+                BrandName = car.CarType.Brand,
+                IsManual = car.CarType.IsManual,
+                KM = car.KM,
+                Model = car.CarType.Model,
+                Picture = car.CarPic,
+                PriceExtra = car.CarType.PriceExtraPerDay,
+                PricePerDay = car.CarType.PricePerDay,
+                Year = car.CarType.Year
             };
         }
     }

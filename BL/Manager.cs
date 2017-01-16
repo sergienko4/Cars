@@ -13,8 +13,8 @@ namespace BL
         private GetDataFromDB _db = new GetDataFromDB();
         public List<Car> GetCars()
         {
-            var result = _db.GetCars();
-            throw new NotImplementedException();
+            var result = _db.GetCars().ToList();
+            return result;
         }
 
 

@@ -9,14 +9,14 @@ namespace Dal
 {
    public class GetDataFromDB
     {
-        //private DbRequest _db = new DbRequest();
+        RentCarEntities _db;
 
         public List<Car> GetCars()
         {
             List<Car> list;
-            using (RentCarEntities _db = new RentCarEntities())
+            using (_db = new RentCarEntities())
             {
-                list = _db.Cars.ToList();
+                list = _db.Cars.Include("CarType").ToList();
             }
             return list;
 
