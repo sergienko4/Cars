@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BL;
+using Dal.Model;
 using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
@@ -19,10 +20,10 @@ namespace WebApplication1.Controllers
         }
 
         [HttpPost]
-        public ActionResult ToRentCar(int CarNumber)
+        public ActionResult ToRentCar(string CarNumber)
         {
-            var car = new Helper.Convertor().GetCarModel(_manager.GetCarByCarID(CarNumber));
-            return View(car);
+            //_manager.RentCar(CarNumber);
+            return View();
 
         }
         public ActionResult Search()
@@ -64,14 +65,21 @@ namespace WebApplication1.Controllers
             }
         }
 
-        // GET: Index/Edit/5
-        public ActionResult Edit(int id)
+
+        public ActionResult Details(string id)
         {
-            return View();
+            if (!string.IsNullOrWhiteSpace(id))
+            {
+                Car result = _manager.GetCarByCarNum(id);
+                var car = new Helper.Convertor().GetCarModel(result);
+                return View(id);
+            }
+            else
+                return RedirectToAction("Index");
         }
 
         // POST: Index/Edit/5
-        [HttpPost]
+
         public ActionResult Edit(int id, FormCollection collection)
         {
             try
@@ -87,7 +95,7 @@ namespace WebApplication1.Controllers
         }
 
         // GET: Index/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(string id)
         {
             return View();
         }

@@ -294,6 +294,7 @@
     <Content Include="Views\Shared\Search\_Search.cshtml" />
     <Content Include="Views\Index\Find.cshtml" />
     <Content Include="Views\Index\Search.cshtml" />
+    <Content Include="Views\Index\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

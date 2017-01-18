@@ -1,0 +1,90 @@
+﻿@model WebApplication1.Models.CarModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CarModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.KM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Picture)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Picture)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CarNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CarNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BrandName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BrandName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Model)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Model)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PricePerDay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PricePerDay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PriceExtra)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PriceExtra)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Year)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Year)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsManual)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsManual)
+        </dd>
+
+    </dl>
+</div>
+<p>
+  
+    @Html.ActionLink("Back to List", "Index")
+</p>

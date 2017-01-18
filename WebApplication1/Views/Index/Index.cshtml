@@ -7,11 +7,11 @@
 <h2>Welcom to rent car </h2>
 
 @*<p>
-    @Html.ActionLink("Create New", "Create")
-</p>*@
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
 <div>
 
-   @*@Html.Partial("Search/_Search", Model.SerachCar)*@
+    @*@Html.Partial("Search/_Search", Model.SerachCar)*@
 
 </div>
 <table class="table">
@@ -22,65 +22,65 @@
         <th>
             @Html.DisplayNameFor(model => model.Picture)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.CarNumber)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.BrandName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Model)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PricePerDay)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PriceExtra)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Year)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsManual)
-        </th>
+        @*<th>
+                    @Html.DisplayNameFor(model => model.PricePerDay)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PriceExtra)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Year)
+                </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsManual)
+            </th>*@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.KM)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Picture)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CarNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BrandName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Model)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PricePerDay)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PriceExtra)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Year)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsManual)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.KM)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Picture)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.CarNumber)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.BrandName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.PricePerDay)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PriceExtra)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Year)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsManual)
+                </td>*@
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.CarNumber })
+
+            </td>
+        </tr>
+    }
 
 </table>

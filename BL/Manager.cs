@@ -18,15 +18,26 @@ namespace BL
         }
 
 
-        public Car GetCarByCarID(int carNumber)
+        public Car GetCarByCarNum(string carNumber)
         {
-            throw new NotImplementedException();
+            var result = _db.GetCarByCarNum(carNumber);
+            return result;
         }
 
-
+        public void RentCar(string carNume, DateTime starTime, DateTime fini)
+        {
+            //TODO rent car order 
+            //var car = GetCarByCarNum(carNume);
+            //car.IsRentable = false;
+            //car.Orders.Add(new Order()
+            //{
+            //    Car =  car, Start = 
+            //});
+            //_db.RentCar(car);
+        }
         public List<Car> SearchCar(CarType car, DateTime start, DateTime finish)
         {
-           return _db.SearchCar(car, start, finish).Tolist();
+           return _db.SearchCar(car, start, finish);
         }
     }
 }
