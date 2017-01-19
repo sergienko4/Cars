@@ -16,25 +16,25 @@
 </div>
 <table class="table">
     <tr>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.KM)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Picture)
         </th>
         @*<th>
-            @Html.DisplayNameFor(model => model.CarNumber)
-        </th>*@
+                @Html.DisplayNameFor(model => model.CarNumber)
+            </th>*@
         <th>
             @Html.DisplayNameFor(model => model.BrandName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Model)
         </th>
-        @*<th>
-                    @Html.DisplayNameFor(model => model.PricePerDay)
-                </th>
-                <th>
+        <th>
+            @Html.DisplayNameFor(model => model.PricePerDay)
+        </th>
+        @* <th>
                     @Html.DisplayNameFor(model => model.PriceExtra)
                 </th>
                 <th>
@@ -49,25 +49,25 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.KM)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Picture)
             </td>
             @*<td>
-                @Html.DisplayFor(modelItem => item.CarNumber)
-            </td>*@
+                    @Html.DisplayFor(modelItem => item.CarNumber)
+                </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.BrandName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Model)
             </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PricePerDay)
+            </td>
             @*<td>
-                    @Html.DisplayFor(modelItem => item.PricePerDay)
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => item.PriceExtra)
                 </td>
                 <td>
@@ -77,7 +77,7 @@
                     @Html.DisplayFor(modelItem => item.IsManual)
                 </td>*@
             <td>
-                @Html.ActionLink("Details", "Details", new { id = item.CarNumber })
+                @Html.ActionLink("Rent", "Details", new { id = item.CarNumber })
 
             </td>
         </tr>

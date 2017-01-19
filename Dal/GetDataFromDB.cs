@@ -17,7 +17,8 @@ namespace Dal
             List<Car> list;
             using (_db = new RentCarEntities())
             {
-                list = _db.Cars.Where(x => x.IsFix.Equals(true) && x.IsRentable.Equals(true)).Include("CarType").ToList();
+                list =
+                    _db.Cars.Where(x => x.IsFix.Equals(true) && x.IsRentable.Equals(true)).Include("CarType").ToList();
             }
             return list;
 
@@ -28,23 +29,57 @@ namespace Dal
             Car car = null;
             using (_db = new RentCarEntities())
             {
-                car = _db.Cars.FirstOrDefault(x => x.CarNum.Equals(num));
+                car = _db.Cars.Include("CarType").First(x => x.CarNum.Equals(num));
             }
             return car;
         }
 
-        public List<Car> SearchCar(CarType car, DateTime start, DateTime finish)
+        public List<Car> SearchCar(CarType car)
         {
             List<Car> list = null;
             using (_db = new RentCarEntities())
             {
-               // list = _db.CarTypes.Where(x => x.IsManual.Equals(car.IsManual) && x.Model.Equals(car.Model) && x.Brand.Equals(car.Brand)).Where(n => n.)
-                    //.Include("CarType").ToList();
+                var listTypes =
+                    _db.CarTypes.Where(
+                        x =>
+                            x.IsManual.Equals(car.IsManual) && (car.Model == null || x.Model.Equals(car.Model)) &&
+                            (car.Brand == null || x.Brand.Equals(car.Brand))).Select(x => x.CarTypeID).ToList();
+                list = _db.Cars.Where(x => listTypes.Contains(x.CarTypeID) && x.IsRentable).Include("CarType").ToList();
             }
             return list;
         }
 
-        public void RentCar(Car car)
+        public User GetUserByID(int id)
+        {
+            User user = null;
+            using (_db = new RentCarEntities())
+            {
+                user = _db.Users.FirstOrDefault(x => x.UserID == id);
+            }
+            return user;
+        }
+
+        public User IsValidLogin(string userName, string pass)
+        {
+            User user = null;
+            using (_db = new RentCarEntities())
+            {
+                user = _db.Users.Single(x => x.UserName == userName && x.Password == pass);
+            }
+            return user;
+        }
+
+
+        public void MakeNewOrder(Order order)
+        {
+            using (_db = new RentCarEntities())
+            {
+                _db.Orders.Add(order);
+                _db.SaveChanges();
+            }
+        }
+
+        public void UpdateCar(Car car)
         {
             using (_db = new RentCarEntities())
             {

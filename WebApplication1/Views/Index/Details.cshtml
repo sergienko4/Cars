@@ -1,90 +1,60 @@
-﻿@model WebApplication1.Models.CarModel
+﻿@model WebApplication1.Models.OrderModel
 
 @{
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Details @ViewBag.UserName</h2>
+
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <h4>OrderModel</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Start, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Start, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Start, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Finish, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Finish, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Finish, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.CarNum, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">*@
+                @Html.HiddenFor(model => model.UserID, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.ValidationMessageFor(model => model.CarNum, "", new { @class = "text-danger" })*@
+            </div>
+        </div>
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.UserID, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <div class="col-md-10">
+                @Html.HiddenFor(model => model.car.CarNumber, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.HiddenFor(model => model.car.PricePerDay, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.ValidationMessageFor(model => model.UserID, "", new { @class = "text-danger" })*@
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Go for it" class="btn btn-default" />
+            </div>
+        </div>
+}
 
 <div>
-    <h4>CarModel</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.KM)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.KM)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Picture)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Picture)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CarNumber)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CarNumber)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.BrandName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.BrandName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Model)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Model)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PricePerDay)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PricePerDay)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PriceExtra)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PriceExtra)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Year)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Year)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IsManual)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IsManual)
-        </dd>
-
-    </dl>
-</div>
-<p>
-  
     @Html.ActionLink("Back to List", "Index")
-</p>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -20,24 +20,42 @@ namespace BL
 
         public Car GetCarByCarNum(string carNumber)
         {
-            var result = _db.GetCarByCarNum(carNumber);
-            return result;
+            return _db.GetCarByCarNum(carNumber);
         }
 
-        public void RentCar(string carNume, DateTime starTime, DateTime fini)
+        public List<Car> SearchCar(CarType car)
         {
-            //TODO rent car order 
-            //var car = GetCarByCarNum(carNume);
-            //car.IsRentable = false;
-            //car.Orders.Add(new Order()
-            //{
-            //    Car =  car, Start = 
-            //});
-            //_db.RentCar(car);
+            return _db.SearchCar(car);
         }
-        public List<Car> SearchCar(CarType car, DateTime start, DateTime finish)
+
+        public User GetUserByID(int id)
         {
-           return _db.SearchCar(car, start, finish);
+            return _db.GetUserByID(id);
+        }
+
+        public User IsValidLogin(string userName, string pass)
+        {
+            return _db.IsValidLogin(userName, pass);
+        }
+
+        public void MakeOrder(Order newOrder)
+        {
+            Car car = GetCarByCarNum(newOrder.Car.CarNum);
+            Order order = new Order()
+            {
+                UserID = newOrder.UserID,
+                CarID = car.CarID,
+                Start = newOrder.Start,
+                Finish = newOrder.Finish
+            };
+            _db.MakeNewOrder(order);
+            ChangeCarStateRent(car);
+            _db.UpdateCar(car);
+        }
+
+        private void ChangeCarStateRent(Car car)
+        {
+            car.IsRentable = !car.IsRentable;
         }
     }
 }

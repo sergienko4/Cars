@@ -15,7 +15,7 @@ namespace WebApplication1.Helper
 
             foreach (var car in cars)
             {
-                list.Add(new CarModel()
+                var c = new CarModel()
                 {
                     CarNumber = car.CarNum,
                     BrandName = car.CarType.Brand,
@@ -26,8 +26,9 @@ namespace WebApplication1.Helper
                     PriceExtra = car.CarType.PriceExtraPerDay,
                     PricePerDay = car.CarType.PricePerDay,
                     Year = car.CarType.Year
-            });
-        }
+                };
+                list.Add(c);
+            }
             return list;
         }
 
@@ -35,24 +36,50 @@ namespace WebApplication1.Helper
         {
             return new CarType()
             {
-                Model = SearchCar.Model, Brand =  SearchCar.Brand, IsManual = SearchCar.IsManual, Year = SearchCar.Year
+                Model = SearchCar.Model,
+                Brand = SearchCar.Brand,
+                IsManual = SearchCar.IsManual
             };
         }
 
         public CarModel GetCarModel(Car car)
-    {
-        return new CarModel()
         {
-            CarNumber = car.CarNum,
-            BrandName = car.CarType.Brand,
-            IsManual = car.CarType.IsManual,
-            KM = car.KM,
-            Model = car.CarType.Model,
-            Picture = car.CarPic,
-            PriceExtra = car.CarType.PriceExtraPerDay,
-            PricePerDay = car.CarType.PricePerDay,
-            Year = car.CarType.Year
-        };
+            return new CarModel()
+            {
+                CarNumber = car.CarNum,
+                BrandName = car.CarType.Brand,
+                IsManual = car.CarType.IsManual,
+                KM = car.KM,
+                Model = car.CarType.Model,
+                Picture = car.CarPic,
+                PriceExtra = car.CarType.PriceExtraPerDay,
+                PricePerDay = car.CarType.PricePerDay,
+                Year = car.CarType.Year
+            };
+        }
+
+        public OrderModel GetOrderModelFromCarModel(CarModel tempCar, int id)
+        {
+            return new OrderModel()
+            {
+                car = tempCar,
+                UserID = id
+            };
+        }
+
+
+        public Order getOrderFromOrderModel(OrderModel order)
+        {
+            return new Order()
+            {
+
+                Car = new Car() { CarNum = order.car.CarNumber, CarType = new CarType() { PricePerDay = order.car.PricePerDay } },
+                Finish = order.Finish,
+                Start = order.Start,
+                UserID = order.UserID
+            };
+        }
+
+
     }
-}
 }

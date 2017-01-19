@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
+using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
@@ -25,7 +26,13 @@ namespace WebApplication1
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-                LoginPath = new PathString("/Account/Login"),
+                LoginPath = new PathString("/LogIn/LogIn"),
+                AuthenticationMode = AuthenticationMode.Active,
+                CookieHttpOnly = true,
+                CookieSecure = CookieSecureOption.SameAsRequest,
+                CookiePath = "/",
+                CookieName = CookieAuthenticationDefaults.CookiePrefix + "GM",
+                CookieDomain = "localhost",
                 Provider = new CookieAuthenticationProvider
                 {
                     // Enables the application to validate the security stamp when the user logs in.

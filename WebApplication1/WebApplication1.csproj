@@ -210,6 +210,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\LogIn.cs" />
+    <Compile Include="Models\OrderModel.cs" />
     <Compile Include="Models\Registration.cs" />
     <Compile Include="Models\SearchCar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

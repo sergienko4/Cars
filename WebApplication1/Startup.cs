@@ -1,4 +1,6 @@
-﻿using Microsoft.Owin;
+﻿using System.Security.Claims;
+using System.Web.Helpers;
+using Microsoft.Owin;
 using Owin;
 
 [assembly: OwinStartupAttribute(typeof(WebApplication1.Startup))]
@@ -9,6 +11,8 @@ namespace WebApplication1
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
+
+    
         }
     }
 }
