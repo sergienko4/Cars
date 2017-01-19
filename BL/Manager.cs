@@ -53,7 +53,7 @@ namespace BL
             _db.UpdateCar(car);
         }
 
-        public Order GetCarBack(Car car)
+        public void GetCarBack(Car car)
         {
             Car myCar = GetCarByCarNum(car.CarNum);
             myCar.KM = car.KM;
@@ -64,8 +64,6 @@ namespace BL
             Order order = _db.GetOrderByCarID(myCar.CarID);
             order.Returned = DateTime.Now;
             _db.CloseOrder(order);
-            return order;
-
         }
 
         private void ChangeCarStateRent(Car car)

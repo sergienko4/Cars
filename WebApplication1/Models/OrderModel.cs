@@ -20,5 +20,7 @@ namespace WebApplication1.Models
         [DataType(DataType.Date)]
 
         public DateTime Finish { get; set; }
+
+        public double ToCharge { get; set; }
     }
 }

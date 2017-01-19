@@ -6,14 +6,15 @@ using System.Web;
 using System.Web.Mvc;
 using BL;
 using Dal.Model;
+using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
     [Authorize]
     public class OrderController : Controller
     {
-        private readonly Manager _manager= new Manager();
-
+        private readonly Manager _manager = new Manager();
+        private readonly Helper.Convertor _helper = new Helper.Convertor();
         // GET: Order
         public ActionResult Index()
         {
@@ -28,17 +29,17 @@ namespace WebApplication1.Controllers
             // if manager
             else if (user.UserType.UserTypeID == 3)
             {
-                
+
             }
             // if client
-            var orders = _manager.GetClientOrders(user.UserID); 
+            var orders = _manager.GetClientOrders(user.UserID);
             return View(orders);
         }
 
-       [HttpPost]
+        [HttpPost]
         public ActionResult FindCarByNumCar(string carNum)
-       {
-           Car car = _manager.GetCarByCarNum(carNum);
+        {
+            Car car = _manager.GetCarByCarNum(carNum);
             return View(car);
         }
 
