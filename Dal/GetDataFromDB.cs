@@ -97,5 +97,25 @@ namespace Dal
             }
             return orders;
         }
+
+        public Order GetOrderByCarID(int CarId)
+        {
+           Order order = null;
+            using (_db = new RentCarEntities())
+            {
+                order = _db.Orders.FirstOrDefault(x => x.CarID == CarId && (x.Returned == null));
+            }
+            return order;
+
+        }
+
+        public void CloseOrder(Order order)
+        {
+            using (_db = new RentCarEntities())
+            {
+                _db.Entry(order).State = EntityState.Modified;
+                _db.SaveChanges();
+            }
+        }
     }
 }

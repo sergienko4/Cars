@@ -45,8 +45,8 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public ActionResult GetCarBack(Car car)
         {
-           
-            return View(car);
+            _manager.GetCarBack(car);
+            return View("Index");
         }
 
         // GET: Order/Create

@@ -14,7 +14,16 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.CarID)
+        <div class="form-group">
+            @Html.LabelFor(model => model.CarNum,"Car number", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.CarNum, new { htmlAttributes = new { @class = "form-control" , @readonly = "readonly" } )*@
+                @Html.TextBoxFor(model => model.CarNum, new { @class = "form-control", @readonly = "readonly" })
 
+
+                @*@Html.ValidationMessageFor(model => model.CarNum, "", new { @class = "text-danger" })*@
+            </div>
+        </div>
         <div class="form-group">
             @Html.LabelFor(model => model.KM, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -29,13 +38,13 @@
                 @Html.EditorFor(model => model.CarPic, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.CarPic, "", new { @class = "text-danger" })
             </div>
-        </div>*@IsRentable
+        </div>*@
 
         <div class="form-group">
-            @Html.LabelFor(model => model.IsFix, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.IsFix,"Is the car fix?", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.EditorFor(model => model.IsFix)
             <div class="col-md-10">
                 <div class="checkbox">
-                    @Html.EditorFor(model => model.IsFix)
                     @Html.ValidationMessageFor(model => model.IsFix, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -51,16 +60,7 @@
             </div>
         </div>*@
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.CarNum, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @*@Html.EditorFor(model => model.CarNum, new { htmlAttributes = new { @class = "form-control" , @readonly = "readonly" } )*@
-                @Html.TextBoxFor(model => model.CarNum, new { @class = "form-control", @readonly = "readonly" })
-
-
-                @*@Html.ValidationMessageFor(model => model.CarNum, "", new { @class = "text-danger" })*@
-            </div>
-        </div>
+    
 
         @*<div class="form-group">
             @Html.LabelFor(model => model.CarTypeID, htmlAttributes: new { @class = "control-label col-md-2" })

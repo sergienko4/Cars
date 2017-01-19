@@ -53,6 +53,21 @@ namespace BL
             _db.UpdateCar(car);
         }
 
+        public Order GetCarBack(Car car)
+        {
+            Car myCar = GetCarByCarNum(car.CarNum);
+            myCar.KM = car.KM;
+            myCar.IsFix = car.IsFix;
+            ChangeCarStateRent(myCar);
+            _db.UpdateCar(myCar);
+
+            Order order = _db.GetOrderByCarID(myCar.CarID);
+            order.Returned = DateTime.Now;
+            _db.CloseOrder(order);
+            return order;
+
+        }
+
         private void ChangeCarStateRent(Car car)
         {
             car.IsRentable = !car.IsRentable;
