@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
 using BL;
+using Dal.Model;
 
 namespace WebApplication1.Controllers
 {
@@ -22,7 +23,7 @@ namespace WebApplication1.Controllers
             // if worker
             if (user.UserType.UserTypeID == 1)
             {
-                
+                return View("GetCarFromClient");
             }
             // if manager
             else if (user.UserType.UserTypeID == 3)
@@ -34,10 +35,18 @@ namespace WebApplication1.Controllers
             return View(orders);
         }
 
-        // GET: Order/Details/5
-        public ActionResult Details(int id)
+       [HttpPost]
+        public ActionResult FindCarByNumCar(string carNum)
+       {
+           Car car = _manager.GetCarByCarNum(carNum);
+            return View(car);
+        }
+
+        [HttpPost]
+        public ActionResult GetCarBack(Car car)
         {
-            return View();
+           
+            return View(car);
         }
 
         // GET: Order/Create
