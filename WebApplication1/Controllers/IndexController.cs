@@ -12,7 +12,7 @@ using FormCollection = System.Web.Mvc.FormCollection;
 
 namespace WebApplication1.Controllers
 {
-    [Authorize]
+   
     public class IndexController : Controller
     {
         private BL.Manager _manager = new Manager();
@@ -24,6 +24,7 @@ namespace WebApplication1.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult ToRentCar(string CarNumber)
         {
             //_manager.RentCar(CarNumber);
@@ -43,24 +44,7 @@ namespace WebApplication1.Controllers
             return View("Index", cars);
         }
 
-        // POST: Index/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-
-        }
-
-
+    
         public ActionResult Details(string id)
         {
 
@@ -76,59 +60,22 @@ namespace WebApplication1.Controllers
                 CarModel tempCar = new Helper.Convertor().GetCarModel(result);
 
                 //TODO: Send user id 
-                var order = new Helper.Convertor().GetOrderModelFromCarModel(tempCar, 1);
+                var order = new Helper.Convertor().GetOrderModelFromCarModel(tempCar);
                 return View(order);
             }
             else
                 return RedirectToAction("Index");
         }
         [HttpPost]
+        [Authorize]
         public ActionResult Details(OrderModel order)
         {
-            var iddd = User.Identity.Name;
             var t = (ClaimsIdentity)User.Identity;
-            //var userID = t.Claims.ToList()[1].Value;
             order.UserID = Convert.ToInt16(t.Claims.ToList()[1].Value);
             var NewOrder = new Helper.Convertor().getOrderFromOrderModel(order);
             _manager.MakeOrder(NewOrder);
             return RedirectToAction("Index");
         }
-        // POST: Index/Edit/5
-
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Index/Delete/5
-        public ActionResult Delete(string id)
-        {
-            return View();
-        }
-
-        // POST: Index/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        
     }
 }

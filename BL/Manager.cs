@@ -57,5 +57,10 @@ namespace BL
         {
             car.IsRentable = !car.IsRentable;
         }
+
+        public List<Order> GetClientOrders(int userUserId)
+        {
+            return _db.GetClientOrders(userUserId);
+        }
     }
 }

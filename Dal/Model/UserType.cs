@@ -12,26 +12,18 @@ namespace Dal.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class UserType
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
+        public UserType()
         {
-            this.Orders = new HashSet<Order>();
+            this.Users = new HashSet<User>();
         }
     
-        public int UserID { get; set; }
-        public string FullName { get; set; }
-        public string ID { get; set; }
-        public string UserName { get; set; }
-        public string Password { get; set; }
-        public Nullable<System.DateTime> Birthday { get; set; }
-        public string Gender { get; set; }
-        public string PicPath { get; set; }
         public int UserTypeID { get; set; }
+        public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Orders { get; set; }
-        public virtual UserType UserType { get; set; }
+        public virtual ICollection<User> Users { get; set; }
     }
 }

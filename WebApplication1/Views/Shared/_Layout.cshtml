@@ -24,7 +24,15 @@
             </div>
             <div>
                 <ul>
-                    <li>@Html.ActionLink("Search car", "Search","Index")</li>
+                    <li>@Html.ActionLink("Search car", "Search", "Index")</li>
+                    @{
+                        if (Session["UserType"] != null)
+                        {
+                            <li>@Html.ActionLink("Orders", "Index", "Order")</li>
+                        }
+                    }
+
+
                 </ul>
             </div>
         </div>

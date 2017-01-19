@@ -28,23 +28,29 @@ namespace WebApplication1.Controllers
             {
                 var _user = _manager.IsValidLogin(user.UserName, user.Password);
 
-
-                var context = Request.GetOwinContext();
-                context.Authentication.SignIn(new AuthenticationProperties()
+                if (_user != null)
                 {
-                    IsPersistent = true,
-                },
-                    new ClaimsIdentity(new[]
+                    var context = Request.GetOwinContext();
+                    context.Authentication.SignIn(new AuthenticationProperties()
                         {
-                            new Claim(ClaimsIdentity.DefaultNameClaimType, _user.UserName),
-                            new Claim(ClaimTypes.Sid, _user.UserID.ToString()),
-                            new Claim(ClaimTypes.Gender, _user.Gender)
-                        }, 
-                    DefaultAuthenticationTypes.ApplicationCookie));
-                context.Response.Headers.Add("Location", new[] { "/" });
+                            IsPersistent = true,
+                        },
+                        new ClaimsIdentity(new[]
+                            {
+                                new Claim(ClaimsIdentity.DefaultNameClaimType, _user.UserName),
+
+                                new Claim(ClaimTypes.Sid, _user.UserID.ToString()),
+                            },
+                            DefaultAuthenticationTypes.ApplicationCookie));
+                    context.Response.Headers.Add("Location", new[] {"/"});
 
 
-                return RedirectToActionPermanent("Index", "Index");
+                    string TypeName = _manager.GetUserByID(_user.UserID).UserType.Name;
+                    Session["UserType"] = TypeName;
+
+                    //bool isAdmin = HttpContext.User.IsInRole(TypeName);
+                    return RedirectToActionPermanent("Index", "Index");
+                }
             }
 
             return View();

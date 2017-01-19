@@ -58,12 +58,11 @@ namespace WebApplication1.Helper
             };
         }
 
-        public OrderModel GetOrderModelFromCarModel(CarModel tempCar, int id)
+        public OrderModel GetOrderModelFromCarModel(CarModel tempCar)
         {
             return new OrderModel()
             {
-                car = tempCar,
-                UserID = id
+                car = tempCar
             };
         }
 

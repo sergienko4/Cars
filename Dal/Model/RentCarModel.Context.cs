@@ -20,15 +20,16 @@ namespace Dal.Model
         {
         }
     
-        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        //{
-        //    throw new UnintentionalCodeFirstException();
-        //}
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            throw new UnintentionalCodeFirstException();
+        }
     
         public virtual DbSet<Branch> Branches { get; set; }
         public virtual DbSet<Car> Cars { get; set; }
         public virtual DbSet<CarType> CarTypes { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<UserType> UserTypes { get; set; }
     }
 }

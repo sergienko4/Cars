@@ -82,6 +82,9 @@
     <Compile Include="Model\User.cs">
       <DependentUpon>RentCarModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\UserType.cs">
+      <DependentUpon>RentCarModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
