@@ -7,7 +7,7 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New Order", "Index", "Index")
 </p>
 <table class="table">
     <tr>
@@ -20,12 +20,12 @@
         <th>
             @Html.DisplayNameFor(model => model.Returned)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.UserID)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.CarID)
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
@@ -40,17 +40,17 @@
         <td>
             @Html.DisplayFor(modelItem => item.Returned)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.UserID)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.CarID)
-        </td>
-        <td>
+        </td>*@
+        @*<td>
             @Html.ActionLink("Edit", "Edit", new { id=item.OrderID }) |
             @Html.ActionLink("Details", "Details", new { id=item.OrderID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.OrderID })
-        </td>
+        </td>*@
     </tr>
 }
 

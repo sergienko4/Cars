@@ -64,7 +64,7 @@ namespace Dal
             User user = null;
             using (_db = new RentCarEntities())
             {
-                user = _db.Users.Single(x => x.UserName == userName && x.Password == pass);
+                user = _db.Users.FirstOrDefault(x => x.UserName == userName && x.Password.Equals(pass));
             }
             return user;
         }
@@ -116,6 +116,26 @@ namespace Dal
                 _db.Entry(order).State = EntityState.Modified;
                 _db.SaveChanges();
             }
+        }
+
+        public List<Order> GetAllOrders()
+        {
+            List<Order> orders = null;
+            using (_db = new RentCarEntities())
+            {
+                orders = _db.Orders.ToList();
+            }
+            return orders;
+        }
+
+        public List<User> GetAllUsers()
+        {
+            List<User> users = null;
+            using (_db = new RentCarEntities())
+            {
+                users = _db.Users.ToList();
+            }
+            return users;
         }
     }
 }

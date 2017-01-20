@@ -10,7 +10,7 @@ namespace BL
 {
     public class Manager
     {
-        private GetDataFromDB _db = new GetDataFromDB();
+        private readonly GetDataFromDB _db = new GetDataFromDB();
         public List<Car> GetCars()
         {
             var result = _db.GetCars().ToList();
@@ -47,6 +47,7 @@ namespace BL
                 CarID = car.CarID,
                 Start = newOrder.Start,
                 Finish = newOrder.Finish
+               
             };
             _db.MakeNewOrder(order);
             ChangeCarStateRent(car);
@@ -74,6 +75,16 @@ namespace BL
         public List<Order> GetClientOrders(int userUserId)
         {
             return _db.GetClientOrders(userUserId);
+        }
+
+        public List<Order> GetAllOrders()
+        {
+            return _db.GetAllOrders();
+        }
+
+        public List<User> GetAllUsers()
+        {
+            return _db.GetAllUsers();
         }
     }
 }

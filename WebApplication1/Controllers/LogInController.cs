@@ -51,6 +51,11 @@ namespace WebApplication1.Controllers
                     //bool isAdmin = HttpContext.User.IsInRole(TypeName);
                     return RedirectToActionPermanent("Index", "Index");
                 }
+                else
+                {
+                    ModelState.AddModelError("LogOnError", "The user name or password provided is incorrect.");
+
+                }
             }
 
             return View();

@@ -201,6 +201,7 @@
     <Compile Include="Controllers\IndexController.cs" />
     <Compile Include="Controllers\LogInController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ManagerController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -300,9 +301,11 @@
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Order\GetCarFromClient.cshtml" />
     <Content Include="Views\Order\FindCarByNumCar.cshtml" />
+    <Content Include="Views\Manager\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Car\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

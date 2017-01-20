@@ -29,6 +29,14 @@
                         if (Session["UserType"] != null)
                         {
                             <li>@Html.ActionLink("Orders", "Index", "Order")</li>
+
+                            if (Session["UserType"].Equals("Manager"))
+                            {
+                                <li>@Html.ActionLink("Car List", "Index", "Index")</li>
+                                <li>@Html.ActionLink("Users", "Index", "Manager")</li>
+
+                            }
+
                         }
                     }
 
