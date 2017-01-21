@@ -46,8 +46,9 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public ActionResult GetCarBack(Car car)
         {
-            _manager.GetCarBack(car);
-           return RedirectToAction("Index", "Index");
+           var price = _manager.GetCarBack(car);
+            ViewBag.Total = ($"The Final price to pay is : {price} ILS") ;
+            return View("Final");
         }
 
        

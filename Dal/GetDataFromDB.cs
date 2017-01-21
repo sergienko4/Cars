@@ -137,5 +137,15 @@ namespace Dal
             }
             return users;
         }
+
+        public CarType PriceTypeCarByCar(Car car)
+        {
+            CarType carType = null;
+            using (_db = new RentCarEntities())
+            {
+                carType = _db.CarTypes.First(x=>x.CarTypeID == car.CarTypeID);
+            }
+            return carType;
+        }
     }
 }

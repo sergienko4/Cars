@@ -47,14 +47,14 @@ namespace BL
                 CarID = car.CarID,
                 Start = newOrder.Start,
                 Finish = newOrder.Finish
-               
+
             };
             _db.MakeNewOrder(order);
             ChangeCarStateRent(car);
             _db.UpdateCar(car);
         }
 
-        public void GetCarBack(Car car)
+        public double GetCarBack(Car car)
         {
             Car myCar = GetCarByCarNum(car.CarNum);
             myCar.KM = car.KM;
@@ -65,8 +65,26 @@ namespace BL
             Order order = _db.GetOrderByCarID(myCar.CarID);
             order.Returned = DateTime.Now;
             _db.CloseOrder(order);
+           return GetFinalPrice(myCar, order);
+
+
         }
 
+        private double GetFinalPrice(Car car, Order order)
+        {
+            decimal price = 0;
+            CarType carType = _db.PriceTypeCarByCar(car);
+            if (order.Returned >= order.Finish)
+            {
+                var extra = Math.Abs(order.Finish.Subtract((DateTime)order.Returned).Days);
+                price = extra * carType.PriceExtraPerDay;
+            }
+
+            var result = order.Finish.Subtract(order.Start).Days;
+            price += result * carType.PricePerDay;
+            return Convert.ToDouble(price);
+
+        }
         private void ChangeCarStateRent(Car car)
         {
             car.IsRentable = !car.IsRentable;

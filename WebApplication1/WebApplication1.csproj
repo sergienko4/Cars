@@ -251,6 +251,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\myJS.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
@@ -302,6 +303,7 @@
     <Content Include="Views\Order\GetCarFromClient.cshtml" />
     <Content Include="Views\Order\FindCarByNumCar.cshtml" />
     <Content Include="Views\Manager\Index.cshtml" />
+    <Content Include="Views\Order\Final.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

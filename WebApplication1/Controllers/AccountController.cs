@@ -383,6 +383,7 @@ namespace WebApplication1.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            Session["UserType"] = null;
             return RedirectToAction("Index", "Index");
         }
 

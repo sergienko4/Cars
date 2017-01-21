@@ -17,8 +17,8 @@
 <table class="table">
     <tr>
         @*<th>
-            @Html.DisplayNameFor(model => model.KM)
-        </th>*@
+                @Html.DisplayNameFor(model => model.KM)
+            </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Picture)
         </th>
@@ -50,8 +50,8 @@
     {
         <tr>
             @*<td>
-                @Html.DisplayFor(modelItem => item.KM)
-            </td>*@
+                    @Html.DisplayFor(modelItem => item.KM)
+                </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Picture)
             </td>
@@ -77,10 +77,16 @@
                     @Html.DisplayFor(modelItem => item.IsManual)
                 </td>*@
             <td>
-                @Html.ActionLink("Rent", "Details", new { id = item.CarNumber })
+                @{
+                    if (Session["UserType"] == null || Session["UserType"].Equals("Client"))
+                    { @Html.ActionLink("Rent", "Details", new { id = item.CarNumber })}
+
+                    else if (Session["UserType"].Equals("Manager"))
+                    { @Html.ActionLink("Detail", "Details", new { id = item.CarNumber })}
+                }
 
             </td>
         </tr>
-    }
+                    }
 
 </table>
