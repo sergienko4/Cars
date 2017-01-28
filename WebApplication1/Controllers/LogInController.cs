@@ -67,7 +67,7 @@ namespace WebApplication1.Controllers
             {
                 if (Session["UserType"].Equals("Manager"))
                 {
-                    var userTypes = _manager.GetUserTypes();
+                    var userTypes = _manager.GetCarTypes();
                     ViewBag.ItemsSelect = new SelectList(userTypes, "UserTypeID", "Name", userTypes[0]);
                 }
             }

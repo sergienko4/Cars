@@ -63,7 +63,12 @@ namespace WebApplication1.Controllers
         {
             var or = new Helper.Convertor().GetOrderFromOrderModel(order);
             _manager.UpdateOrder(or);
-            return View();
+            return RedirectToAction("Index");
+        }
+        public ActionResult Delete(int id)
+        {
+            _manager.DeleteOrderByID(id);
+            return RedirectToAction("Index");
         }
     }
 }

@@ -307,10 +307,10 @@
     <Content Include="Views\Index\ViewCarDetails.cshtml" />
     <Content Include="Views\Manager\Edit.cshtml" />
     <Content Include="Views\Order\Edit.cshtml" />
+    <Content Include="Views\Index\CreateNewCar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Car\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

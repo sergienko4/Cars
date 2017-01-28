@@ -241,5 +241,26 @@ namespace Dal
                 _db.SaveChanges();
             }
         }
+
+        public void DeleteOrderByID(Order order)
+        {
+            using (_db = new RentCarEntities())
+            {
+                _db.Entry(order).State = EntityState.Deleted; // or EntityState.Modified for edit etc.
+                _db.SaveChanges();
+                //_db.Orders.Remove(order);
+                //_db.SaveChanges();
+            }
+        }
+
+        public Car GetCarByID(int orderCarId)
+        {
+            Car car = null;
+            using (_db = new RentCarEntities())
+            {
+                car = _db.Cars.FirstOrDefault(x=>x.CarID == orderCarId);
+            }
+            return car;
+        }
     }
 }

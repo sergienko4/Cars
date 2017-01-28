@@ -21,7 +21,7 @@ namespace WebApplication1.Controllers
         public ActionResult Edit(int UserID)
         {
             var user = _manager.GetUserByID(UserID);
-            var userTypes = _manager.GetUserTypes();
+            var userTypes = _manager.GetCarTypes();
             //var model = new MyViewModel();
             ViewBag.ItemsSelect = new SelectList(userTypes, "UserTypeID", "Name", user.UserTypeID);
             //Other initialization code

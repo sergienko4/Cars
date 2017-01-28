@@ -113,7 +113,7 @@ namespace BL
             dbCar.IsRentable = car.IsRentable;
             dbCar.IsFix = car.IsFix;
             dbCar.CarNum = car.CarNum;
-           _db.UpdateCar(dbCar);
+            _db.UpdateCar(dbCar);
         }
 
         public List<Car> GetCars()
@@ -126,7 +126,7 @@ namespace BL
             _db.DeleteCarByCarNum(id);
         }
 
-        public List<UserType> GetUserTypes()
+        public List<UserType> GetCarTypes()
         {
             return _db.GetUserTypes();
         }
@@ -156,7 +156,7 @@ namespace BL
 
         public Order GetOrderByID(int id)
         {
-           return _db.GetOrderByOrderID(id);
+            return _db.GetOrderByOrderID(id);
         }
 
         public void UpdateOrder(Order order)
@@ -164,8 +164,18 @@ namespace BL
             var dbOrder = GetOrderByID(order.OrderID);
             dbOrder.Start = order.Start;
             dbOrder.Finish = order.Finish;
-            dbOrder.Returned = order.Returned;
+            if (order.Returned != default(DateTime) && order.Returned != null)
+                dbOrder.Returned = order.Returned;
             _db.UpdateOrder(dbOrder);
+        }
+
+        public void DeleteOrderByID(int id)
+        {
+            var order = GetOrderByID(id);
+            _db.DeleteOrderByID(order);
+            var car = _db.GetCarByID(order.CarID);
+            car.IsRentable = true;
+            _db.UpdateCar(car);
         }
     }
 }

@@ -6,25 +6,17 @@
 
 <h2>Welcom to rent car </h2>
 
-@*<p>
-        @Html.ActionLink("Create New", "Create")
-    </p>*@
 <div>
 
-    @*@Html.Partial("Search/_Search", Model.SerachCar)*@
 
 </div>
 <table class="table">
     <tr>
-        @*<th>
-                @Html.DisplayNameFor(model => model.KM)
-            </th>*@
+     
         <th>
             @Html.DisplayNameFor(model => model.Picture)
         </th>
-        @*<th>
-                @Html.DisplayNameFor(model => model.CarNumber)
-            </th>*@
+    
         <th>
             @Html.DisplayNameFor(model => model.BrandName)
         </th>
@@ -34,15 +26,6 @@
         <th>
             @Html.DisplayNameFor(model => model.PricePerDay)
         </th>
-        @* <th>
-                    @Html.DisplayNameFor(model => model.PriceExtra)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Year)
-                </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsManual)
-            </th>*@
         <th></th>
     </tr>
 
@@ -78,6 +61,15 @@
 
             </td>
         </tr>
-                    }
+    }
 
 </table>
+@*@{
+    if (Session["UserType"] != null)
+    {
+        if (Session["UserType"].Equals("Manager"))
+        {
+            @Html.ActionLink("Add a car", "Create");
+        }
+    }
+}*@
