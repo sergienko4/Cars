@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using BL;
+using Dal.Model;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using WebApplication1.Models;
@@ -32,9 +33,9 @@ namespace WebApplication1.Controllers
                 {
                     var context = Request.GetOwinContext();
                     context.Authentication.SignIn(new AuthenticationProperties()
-                        {
-                            IsPersistent = true,
-                        },
+                    {
+                        IsPersistent = true,
+                    },
                         new ClaimsIdentity(new[]
                             {
                                 new Claim(ClaimsIdentity.DefaultNameClaimType, _user.UserName),
@@ -42,7 +43,7 @@ namespace WebApplication1.Controllers
                                 new Claim(ClaimTypes.Sid, _user.UserID.ToString()),
                             },
                             DefaultAuthenticationTypes.ApplicationCookie));
-                    context.Response.Headers.Add("Location", new[] {"/"});
+                    context.Response.Headers.Add("Location", new[] { "/" });
 
 
                     string TypeName = _manager.GetUserByID(_user.UserID).UserType.Name;
@@ -62,12 +63,27 @@ namespace WebApplication1.Controllers
         }
         public ActionResult Registration()
         {
+            if (Session["UserType"] != null)
+            {
+                if (Session["UserType"].Equals("Manager"))
+                {
+                    var userTypes = _manager.GetUserTypes();
+                    ViewBag.ItemsSelect = new SelectList(userTypes, "UserTypeID", "Name", userTypes[0]);
+                }
+            }
+            List<Char> gender = new List<Char>() { 'M', 'F' };
+            ViewBag.Gender = new SelectList(gender, gender[0]);
             return View();
         }
         [HttpPost]
-        public ActionResult Registration(Registration user)
+        public ActionResult Registration(Registration registration)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                    User newUser = new Helper.Convertor().GetUserFromREgistration(registration);
+                    _manager.AddNewUser(newUser);
+            }
+            return RedirectToAction("LogIn", "LogIn");
         }
 
 

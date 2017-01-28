@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Security.Claims;
 using System.Web;
@@ -12,13 +13,20 @@ using FormCollection = System.Web.Mvc.FormCollection;
 
 namespace WebApplication1.Controllers
 {
-   
+
     public class IndexController : Controller
     {
         private BL.Manager _manager = new Manager();
         // GET: Index
         public ActionResult Index()
         {
+            if (Session["UserType"] != null)
+            {
+                if (Session["UserType"].Equals("Manager"))
+                {
+                    return View(new Helper.Convertor().GetListOfCarModels(_manager.GetCarsForManager()));
+                }
+            }
             var list = new Helper.Convertor().GetListOfCarModels(_manager.GetCars());
             return View(list);
         }
@@ -44,28 +52,33 @@ namespace WebApplication1.Controllers
             return View("Index", cars);
         }
 
-    
+        [Authorize]
         public ActionResult Details(string id)
         {
-
-            //IOwinContext ctx = Request.GetOwinContext();
-            //ClaimsPrincipal user = ctx.Authentication.User;
-            //var _id  = user.Identity.Name;
-            //ViewBag.UserName = user.Identity.Name;
-
-            // TODO: Check user lpgined
             if (!string.IsNullOrWhiteSpace(id))
             {
                 Car result = _manager.GetCarByCarNum(id);
+                if (Session["UserType"].Equals("Manager"))
+                {
+                    return View("ViewCarDetails", result);
+                }
                 CarModel tempCar = new Helper.Convertor().GetCarModel(result);
-
-                //TODO: Send user id 
                 var order = new Helper.Convertor().GetOrderModelFromCarModel(tempCar);
                 return View(order);
             }
             else
                 return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        [Authorize]
+        public ActionResult UpdateCar(Dal.Model.Car car)
+        {
+           
+            _manager.UpdateCar(car);
+            return RedirectToAction("Index");
+        }
+
         [HttpPost]
         [Authorize]
         public ActionResult Details(OrderModel order)
@@ -76,6 +89,15 @@ namespace WebApplication1.Controllers
             _manager.MakeOrder(NewOrder);
             return RedirectToAction("Index");
         }
-        
+        [Authorize]
+        public ActionResult DeleteCar(string carnumber)
+        {
+            if (!string.IsNullOrWhiteSpace(carnumber))
+            {
+                _manager.DeleteCarByCarNum(carnumber);
+            }
+                return RedirectToAction("Index");
+        }
+
     }
 }

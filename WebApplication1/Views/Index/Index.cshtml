@@ -49,15 +49,11 @@
     @foreach (var item in Model)
     {
         <tr>
-            @*<td>
-                    @Html.DisplayFor(modelItem => item.KM)
-                </td>*@
+           
             <td>
                 @Html.DisplayFor(modelItem => item.Picture)
             </td>
-            @*<td>
-                    @Html.DisplayFor(modelItem => item.CarNumber)
-                </td>*@
+         
             <td>
                 @Html.DisplayFor(modelItem => item.BrandName)
             </td>
@@ -67,22 +63,17 @@
             <td>
                 @Html.DisplayFor(modelItem => item.PricePerDay)
             </td>
-            @*<td>
-                    @Html.DisplayFor(modelItem => item.PriceExtra)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Year)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IsManual)
-                </td>*@
+          
             <td>
                 @{
                     if (Session["UserType"] == null || Session["UserType"].Equals("Client"))
                     { @Html.ActionLink("Rent", "Details", new { id = item.CarNumber })}
 
                     else if (Session["UserType"].Equals("Manager"))
-                    { @Html.ActionLink("Detail", "Details", new { id = item.CarNumber })}
+                    {
+                        @Html.ActionLink("Detail", "Details", new { id = item.CarNumber }) <label> | </label>
+                        @Html.ActionLink("Delete", "DeleteCar", new { CarNumber = item.CarNumber });
+                    }
                 }
 
             </td>

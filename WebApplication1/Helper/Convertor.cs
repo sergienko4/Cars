@@ -82,5 +82,31 @@ namespace WebApplication1.Helper
         }
 
 
+        public User GetUserFromREgistration(Registration user)
+        {
+            if (user.UserTypeID == default(int))
+                user.UserTypeID = 3;
+            return new User()
+            {
+                Birthday =  user.Birthday, FullName = user.FirstName + " " + user.LastName, Gender =  user.Gender.ToString(), IsValidUSer = true, Password = user.Pass,
+                UserName =  user.User, ID = user.ID, UserTypeID = user.UserTypeID
+            };
+        }
+
+        public OrderModel GetOrderModelFromOrder(Order result)
+        {
+            return new OrderModel()
+            {
+                Finish = result.Finish, Start = result.Start, Returned = result.Returned, id = result.OrderID
+            };
+        }
+
+        public Order GetOrderFromOrderModel(OrderModel order)
+        {
+           return new Order()
+           {
+               OrderID = order.id, Start = order.Start, Finish = order.Finish, Returned = order.Returned
+           };
+        }
     }
 }

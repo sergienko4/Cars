@@ -12,6 +12,18 @@ namespace Dal
     {
         RentCarEntities _db;
 
+        public List<Car> GetCarsForManager()
+        {
+            List<Car> list;
+            using (_db = new RentCarEntities())
+            {
+                list =
+                    _db.Cars.Include("CarType").ToList();
+            }
+            return list;
+
+        }
+
         public List<Car> GetCars()
         {
             List<Car> list;
@@ -23,7 +35,6 @@ namespace Dal
             return list;
 
         }
-
         public Car GetCarByCarNum(string num)
         {
             Car car = null;
@@ -54,7 +65,7 @@ namespace Dal
             User user = null;
             using (_db = new RentCarEntities())
             {
-                user = _db.Users.Include("UserType").Single(x => x.UserID == id);
+                user = _db.Users.Include("UserType").Single(x => x.UserID == id && x.IsValidUSer == true);
             }
             return user;
         }
@@ -64,7 +75,7 @@ namespace Dal
             User user = null;
             using (_db = new RentCarEntities())
             {
-                user = _db.Users.FirstOrDefault(x => x.UserName == userName && x.Password.Equals(pass));
+                user = _db.Users.FirstOrDefault(x => x.UserName == userName && x.Password.Equals(pass) && x.IsValidUSer == true);
             }
             return user;
         }
@@ -100,7 +111,7 @@ namespace Dal
 
         public Order GetOrderByCarID(int CarId)
         {
-           Order order = null;
+            Order order = null;
             using (_db = new RentCarEntities())
             {
                 order = _db.Orders.FirstOrDefault(x => x.CarID == CarId && (x.Returned == null));
@@ -133,7 +144,7 @@ namespace Dal
             List<User> users = null;
             using (_db = new RentCarEntities())
             {
-                users = _db.Users.ToList();
+                users = _db.Users.Where(x => x.IsValidUSer == true).ToList();
             }
             return users;
         }
@@ -143,9 +154,92 @@ namespace Dal
             CarType carType = null;
             using (_db = new RentCarEntities())
             {
-                carType = _db.CarTypes.First(x=>x.CarTypeID == car.CarTypeID);
+                carType = _db.CarTypes.First(x => x.CarTypeID == car.CarTypeID);
             }
             return carType;
+        }
+
+
+        public void DeleteCarByCarNum(string id)
+        {
+            using (_db = new RentCarEntities())
+            {
+                var car = _db.Cars.FirstOrDefault(x => x.CarNum.Equals(id));
+                if (car != null)
+                    _db.Cars.Remove(car);
+                _db.SaveChanges();
+            }
+        }
+
+        public List<UserType> GetUserTypes()
+        {
+            List<UserType> types = null;
+            using (_db = new RentCarEntities())
+            {
+                types = _db.UserTypes.ToList();
+            }
+            return types;
+        }
+
+        public void UpdateUser(Dal.Model.User dbUser)
+        {
+            using (_db = new RentCarEntities())
+            {
+                _db.Entry(dbUser).State = EntityState.Modified;
+                _db.SaveChanges();
+
+
+            }
+        }
+
+        public UserType GetUserTypeByID(int userTypeId)
+        {
+            UserType type = null;
+            using (_db = new RentCarEntities())
+            {
+                type = _db.UserTypes.FirstOrDefault(x => x.UserTypeID == userTypeId);
+            }
+            return type;
+        }
+
+        public void DeleteUserByID(int id)
+        {
+            using (_db = new RentCarEntities())
+            {
+                var user = _db.Users.FirstOrDefault(x => x.UserID.Equals(id));
+                if (user != null)
+                    user.IsValidUSer = false;
+                _db.Entry(user).State = EntityState.Modified;
+                _db.SaveChanges();
+            }
+        }
+
+        public void AddNewUser(User newUser)
+        {
+            using (_db = new RentCarEntities())
+            {
+                var user = _db.Users.Add(newUser);
+                _db.SaveChanges();
+            }
+        }
+
+        public Order GetOrderByOrderID(int id)
+        {
+            Order order = null;
+            using (_db = new RentCarEntities())
+            {
+                order = _db.Orders.FirstOrDefault(i => i.OrderID == id);
+            }
+            return order;
+        }
+
+        public void UpdateOrder(Order dbOrder)
+        {
+            using (_db = new RentCarEntities())
+            {
+                _db.Entry(dbOrder).State = EntityState.Modified;
+                _db.SaveChanges();
+            }
         }
     }
 }

@@ -29,6 +29,7 @@ namespace Dal.Model
         public string Gender { get; set; }
         public string PicPath { get; set; }
         public int UserTypeID { get; set; }
+        public bool IsValidUSer { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Orders { get; set; }

@@ -11,9 +11,9 @@ namespace BL
     public class Manager
     {
         private readonly GetDataFromDB _db = new GetDataFromDB();
-        public List<Car> GetCars()
+        public List<Car> GetCarsForManager()
         {
-            var result = _db.GetCars().ToList();
+            var result = _db.GetCarsForManager().ToList();
             return result;
         }
 
@@ -65,7 +65,7 @@ namespace BL
             Order order = _db.GetOrderByCarID(myCar.CarID);
             order.Returned = DateTime.Now;
             _db.CloseOrder(order);
-           return GetFinalPrice(myCar, order);
+            return GetFinalPrice(myCar, order);
 
 
         }
@@ -103,6 +103,69 @@ namespace BL
         public List<User> GetAllUsers()
         {
             return _db.GetAllUsers();
+        }
+
+        public void UpdateCar(Car car)
+        {
+            var dbCar = _db.GetCarByCarNum(car.CarNum);
+
+            dbCar.KM = car.KM;
+            dbCar.IsRentable = car.IsRentable;
+            dbCar.IsFix = car.IsFix;
+            dbCar.CarNum = car.CarNum;
+           _db.UpdateCar(dbCar);
+        }
+
+        public List<Car> GetCars()
+        {
+            return _db.GetCars();
+        }
+
+        public void DeleteCarByCarNum(string id)
+        {
+            _db.DeleteCarByCarNum(id);
+        }
+
+        public List<UserType> GetUserTypes()
+        {
+            return _db.GetUserTypes();
+        }
+
+        public void UpdateUser(User user, int userTypeId)
+        {
+            var dbUserType = _db.GetUserTypeByID(userTypeId);
+            var dbUser = GetUserByID(user.UserID);
+            dbUser.UserTypeID = userTypeId;
+            dbUser.FullName = user.FullName;
+            dbUser.Gender = user.Gender;
+            dbUser.Password = user.Password;
+            dbUser.UserName = user.UserName;
+            _db.UpdateUser(dbUser);
+
+        }
+
+        public void DeleteUserByID(int id)
+        {
+            _db.DeleteUserByID(id);
+        }
+
+        public void AddNewUser(User newUser)
+        {
+            _db.AddNewUser(newUser);
+        }
+
+        public Order GetOrderByID(int id)
+        {
+           return _db.GetOrderByOrderID(id);
+        }
+
+        public void UpdateOrder(Order order)
+        {
+            var dbOrder = GetOrderByID(order.OrderID);
+            dbOrder.Start = order.Start;
+            dbOrder.Finish = order.Finish;
+            dbOrder.Returned = order.Returned;
+            _db.UpdateOrder(dbOrder);
         }
     }
 }

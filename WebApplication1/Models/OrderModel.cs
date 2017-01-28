@@ -8,7 +8,7 @@ namespace WebApplication1.Models
 {
     public class OrderModel
     {
-       
+        public int id { get; set; }
         public CarModel car{ get; set; }
       
         public int UserID { get; set; }
@@ -22,5 +22,7 @@ namespace WebApplication1.Models
         public DateTime Finish { get; set; }
 
         public double ToCharge { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime? Returned { get; set; }
     }
 }

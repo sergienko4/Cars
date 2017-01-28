@@ -304,6 +304,9 @@
     <Content Include="Views\Order\FindCarByNumCar.cshtml" />
     <Content Include="Views\Manager\Index.cshtml" />
     <Content Include="Views\Order\Final.cshtml" />
+    <Content Include="Views\Index\ViewCarDetails.cshtml" />
+    <Content Include="Views\Manager\Edit.cshtml" />
+    <Content Include="Views\Order\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -51,6 +51,19 @@ namespace WebApplication1.Controllers
             return View("Final");
         }
 
-       
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var result = _manager.GetOrderByID(id);
+            OrderModel order = new Helper.Convertor().GetOrderModelFromOrder(result);
+            return View(order);
+        }
+        [HttpPost]
+        public ActionResult Edit(OrderModel order)
+        {
+            var or = new Helper.Convertor().GetOrderFromOrderModel(order);
+            _manager.UpdateOrder(or);
+            return View();
+        }
     }
 }

@@ -63,6 +63,7 @@
           <Property Name="Gender" Type="char" MaxLength="1" Nullable="false" />
           <Property Name="PicPath" Type="nvarchar(max)" />
           <Property Name="UserTypeID" Type="int" Nullable="false" />
+          <Property Name="IsValidUSer" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="UserType">
           <Key>
@@ -230,6 +231,7 @@
           <NavigationProperty Name="Orders" Relationship="Self.Order_User" FromRole="User" ToRole="Order" />
           <Property Name="UserTypeID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="UserType" Relationship="RentCarModel.User_UserType" FromRole="User" ToRole="UserType" />
+          <Property Name="IsValidUSer" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="Car_Branch">
           <End Role="Branch" Type="Self.Branch" Multiplicity="1" />
@@ -385,6 +387,7 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="RentCarModel.User">
               <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="IsValidUSer" ColumnName="IsValidUSer" />
                 <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="FullName" ColumnName="FullName" />
