@@ -63,7 +63,8 @@ CREATE TABLE "User" (
     Gender char(1)  NOT NULL CHECK (Gender IN ('M', 'F')),
     PicPath nvarchar(max)  NULL,
     UserTypeID int  NOT NULL,
-    CONSTRAINT User_pk PRIMARY KEY  (UserID)
+    CONSTRAINT User_pk PRIMARY KEY  (UserID),
+	IsValidUSer bit  default 1 NOT NULL
 );
 
 -- Table: UserType

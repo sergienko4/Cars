@@ -133,9 +133,8 @@ namespace BL
 
         public void UpdateUser(User user, int userTypeId)
         {
-            var dbUserType = _db.GetUserTypeByID(userTypeId);
             var dbUser = GetUserByID(user.UserID);
-            dbUser.UserTypeID = userTypeId;
+            dbUser.UserTypeID = user.UserTypeID;
             dbUser.FullName = user.FullName;
             dbUser.Gender = user.Gender;
             dbUser.Password = user.Password;

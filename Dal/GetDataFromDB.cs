@@ -185,6 +185,7 @@ namespace Dal
         {
             using (_db = new RentCarEntities())
             {
+                _db.Users.Attach(dbUser);
                 _db.Entry(dbUser).State = EntityState.Modified;
                 _db.SaveChanges();
 

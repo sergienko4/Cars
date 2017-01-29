@@ -24,21 +24,24 @@
             </div>
             <div>
                 <ul>
-                    <li>@Html.ActionLink("Search car", "Search", "Index")</li>
-                    @{
-                        if (Session["UserType"] != null)
-                        {
-                            <li>@Html.ActionLink("Orders", "Index", "Order")</li>
-
-                            if (Session["UserType"].Equals("Manager"))
+                    <li>
+                        @Html.ActionLink("Search car", "Search", "Index") <label>|</label>
+                        @{
+                            if (Session["UserType"] != null)
                             {
-                                <li>@Html.ActionLink("Car List", "Index", "Index")</li>
-                                <li>@Html.ActionLink("Users", "Index", "Manager")</li>
+                                @Html.ActionLink("Orders", "Index", "Order") <label>|</label>
+
+                                if (Session["UserType"].Equals("Manager"))
+                                {
+                                    @Html.ActionLink("Car List", "Index", "Index") <label>|</label>
+                                    @Html.ActionLink("Users", "Index", "Manager") <label>|</label>
+
+                                }
 
                             }
 
                         }
-                    }
+                    </li>
 
 
                 </ul>
